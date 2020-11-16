@@ -1,1 +1,1 @@
-# Curso de T‚cnicas de Pruebas en Java 
+# Curso de TÃ©cnicas de Pruebas en Java 
