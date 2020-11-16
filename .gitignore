@@ -12,6 +12,7 @@ target/**
 bin/**
 tmp/**
 tmp/**/*
+target/**/*
 *.tmp
 *.bak
 *.swp
