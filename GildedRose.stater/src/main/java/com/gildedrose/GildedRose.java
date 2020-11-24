@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.core.InvalidDataException;
+import com.gildedrose.core.NotFoundException;
+
 public class GildedRose {
     Item[] items;
 
@@ -12,6 +15,18 @@ public class GildedRose {
     				throw new IllegalArgumentException();
 		}
         this.items = items;
+    }
+
+    ItemRepository dao;
+    
+    public GildedRose(ItemRepository dao) throws Exception {
+    	this.dao = dao;
+        this.items = dao.getAll().toArray(new Item[] {});
+    }
+    
+    public void save() throws NotFoundException, InvalidDataException {
+    	for(Item item: items)
+    		dao.modify(item);
     }
 
     public void updateQuality() {

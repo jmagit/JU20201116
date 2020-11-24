@@ -6,18 +6,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.Answer;
 
+import static org.mockito.Mockito.*;
+
+import com.gildedrose.core.InvalidDataException;
 import com.gildedrose.core.SpaceCamelCase;
 
 @DisplayNameGeneration(SpaceCamelCase.class)
+@ExtendWith(MockitoExtension.class)
 class GildedRoseTest {
 
 	@Test
@@ -106,6 +116,121 @@ class GildedRoseTest {
 		assertAll(name, () -> assertEquals(name, product.name, "name"),
 				() -> assertEquals(sellInResult, product.sellIn, "sellIn"),
 				() -> assertEquals(qualityResult, product.quality, "quality"));
+	}
+
+	@Test
+	@Tag("mock")
+	void demoMockTest() throws Exception {
+		ItemRepository dao = mock(ItemRepository.class);
+		when(dao.getOne(anyInt())).thenReturn(Optional.of(new Item("Aged Brie", 1, 7)));
+		// when(dao.getOne(2)).thenReturn(Optional.of(new Item("Backstage passes to a
+		// TAFKAL80ETC concert", 3, 10)));
+
+		Item product = dao.getOne(2).get();
+
+		assertAll("Aged Brie", () -> assertEquals("Aged Brie", product.name, "name"),
+				() -> assertEquals(1, product.sellIn, "sellIn"), () -> assertEquals(7, product.quality, "quality"));
+	}
+
+	Item[] items = new Item[] { new Item(1, "Normal Product", 0, 1), //
+			new Item(2, "+5 Dexterity Vest", 10, 20), //
+			new Item(3, "Aged Brie", 2, 0), //
+			new Item(4, "Elixir of the Mongoose", 5, 7), //
+			new Item(5, "Sulfuras, Hand of Ragnaros", 0, 80), //
+			new Item(6, "Sulfuras, Hand of Ragnaros", -1, 80),
+			new Item(7, "Backstage passes to a TAFKAL80ETC concert", 15, 20),
+			new Item(8, "Backstage passes to a TAFKAL80ETC concert", 10, 49),
+			new Item(9, "Backstage passes to a TAFKAL80ETC concert", 5, 49), new Item(10, "Conjured Mana Cake", 3, 6) };
+
+	@Test
+	@Tag("mock")
+	void demoMockMuchosTest() throws Exception {
+		ItemRepository dao = mock(ItemRepository.class);
+		when(dao.getAll()).thenReturn(Arrays.asList(items));
+
+		List<Item> lst = dao.getAll();
+		Item product = lst.get(2);
+
+		assertEquals(10, lst.size());
+		assertAll("Aged Brie", () -> assertEquals("Aged Brie", product.name, "name"),
+				() -> assertEquals(2, product.sellIn, "sellIn"), () -> assertEquals(0, product.quality, "quality"));
+	}
+
+	@Test
+	@Tag("mock")
+	void constructorGildedRoseTest() throws Exception {
+		ItemRepository dao = mock(ItemRepository.class);
+		when(dao.getAll()).thenReturn(Arrays.asList(items));
+		when(dao.getOne(anyInt())).thenAnswer(new Answer() {
+			public Object answer(InvocationOnMock invocation) {
+				Object[] args = invocation.getArguments();
+				if ((int) args[0] > items.length)
+					return Optional.empty();
+					//throw new IndexOutOfBoundsException();
+				return Optional.of(items[(int) args[0]]);
+			}
+		});
+
+		GildedRose app = new GildedRose(dao);
+		app.updateQuality();
+		Item product = dao.getOne(2).get();
+
+		assertEquals(10, app.items.length);
+		assertAll("Aged Brie", () -> assertEquals("Aged Brie", product.name, "name"),
+				() -> assertEquals(1, product.sellIn, "sellIn"), () -> assertEquals(1, product.quality, "quality"));
+		assertFalse(dao.getOne(22).isPresent());
+		// assertThrows(IndexOutOfBoundsException.class, () -> dao.getOne(22));
+	}
+
+	@Test
+	@Tag("mock")
+	void saveGildedRoseTest() throws Exception {
+		ItemRepository dao = mock(ItemRepository.class);
+		when(dao.getAll()).thenReturn(Arrays.asList(items));
+		doNothing().when(dao).modify(any());
+
+		GildedRose app = new GildedRose(dao);
+		app.updateQuality();
+		Item product = app.items[2];
+		app.save();
+
+		assertEquals(10, app.items.length);
+		assertAll("Aged Brie", () -> assertEquals("Aged Brie", product.name, "name"),
+				() -> assertEquals(1, product.sellIn, "sellIn"), () -> assertEquals(1, product.quality, "quality"));
+
+		verify(dao, times(10)).modify(any());
+	}
+
+	@Test
+	@Tag("mock")
+	void saveMalGildedRoseTest() throws Exception {
+		ItemRepository dao = mock(ItemRepository.class);
+		when(dao.getAll()).thenReturn(Arrays.asList(items));
+		doNothing().when(dao).modify(any());
+		doThrow(InvalidDataException.class).when(dao).modify(items[7]);
+
+		GildedRose app = new GildedRose(dao);
+		app.updateQuality();
+		assertThrows(InvalidDataException.class, () -> app.save());
+
+		verify(dao, times(8)).modify(any());
+	}
+	
+	@Test
+	@Tag("mock")
+	void saveRealGildedRoseTest() throws Exception {
+		ItemRepository dao = spy(new ItemRepositoryImp());
+		GildedRose app = new GildedRose(dao);
+
+		app.updateQuality();
+		app.save();
+		Item product = dao.getOne(3).get();
+
+		assertEquals(10, app.items.length);
+		assertAll("Aged Brie", () -> assertEquals("Aged Brie", product.name, "name"),
+				() -> assertEquals(-4, product.sellIn, "sellIn"), () -> assertEquals(10, product.quality, "quality"));
+
+		verify(dao, times(10)).modify(any());
 	}
 
 }

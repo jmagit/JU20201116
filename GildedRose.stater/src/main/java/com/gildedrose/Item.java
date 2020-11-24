@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 public class Item {
+	public int id;
+	
     public String name;
 
     public int sellIn;
@@ -11,6 +13,10 @@ public class Item {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+    }
+    public Item(int id, String name, int sellIn, int quality) {
+    	this(name, sellIn, quality);
+        this.id = id;
     }
 
    @Override
