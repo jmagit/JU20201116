@@ -2,9 +2,16 @@ package com.gildedrose;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -32,6 +39,7 @@ class GildedRoseTest {
 	}
 
 	@Test
+	@Disabled
 	void privateRefInvalidTest() {
 		Item product = new Item("Elixir of the Mongoose", 1, 10);
 		GildedRose app = new GildedRose(new Item[] { product });
@@ -64,7 +72,7 @@ class GildedRoseTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource({"-2, 49, -3, 50",  "-1, 48, -2, 50", "2, 50, 1, 50", "2, 0, 1, 1", })
+	@CsvSource({ "-2, 49, -3, 50", "-1, 48, -2, 50", "2, 50, 1, 50", "2, 0, 1, 1", })
 	void productAgedBrieTest(int sellIn, int quality, int sellInResult, int qualityResult) {
 		String name = "Aged Brie";
 		Item product = new Item(name, sellIn, quality);
@@ -76,14 +84,7 @@ class GildedRoseTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource({
-		"11, 0, 10, 1",
-		"7, 1, 6, 3",
-		"7, 49, 6, 50",
-		"5, 3, 4, 6",
-		"0, 3, -1, 0",
-		"-1, 3, -2, 0",
-		})
+	@CsvSource({ "11, 0, 10, 1", "7, 1, 6, 3", "7, 49, 6, 50", "5, 3, 4, 6", "0, 3, -1, 0", "-1, 3, -2, 0", })
 	void productBackstagePassesTest(int sellIn, int quality, int sellInResult, int qualityResult) {
 		String name = "Backstage passes to a TAFKAL80ETC concert";
 		Item product = new Item(name, sellIn, quality);
