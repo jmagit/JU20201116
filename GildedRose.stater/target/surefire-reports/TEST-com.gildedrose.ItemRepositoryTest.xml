@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.gildedrose.GildedRoseTest" time="1.385" tests="27" errors="0" skipped="2" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.gildedrose.ItemRepositoryTest" time="1.405" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -55,35 +55,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="privateRefInvalidTest" classname="com.gildedrose.GildedRoseTest" time="0">
-    <skipped message="void com.gildedrose.GildedRoseTest.privateRefInvalidTest() is @Disabled"/>
-  </testcase>
-  <testcase name="saveMalGildedRoseTest" classname="com.gildedrose.GildedRoseTest" time="0.528"/>
-  <testcase name="minQualityInvalidTest" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="productConjuredTest{int, int, int, int}" classname="com.gildedrose.GildedRoseTest" time="0">
-    <skipped message="void com.gildedrose.GildedRoseTest.productConjuredTest(int,int,int,int) is @Disabled"/>
-  </testcase>
-  <testcase name="productBackstagePassesTest{int, int, int, int}[1]" classname="com.gildedrose.GildedRoseTest" time="0.034"/>
-  <testcase name="productBackstagePassesTest{int, int, int, int}[2]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="productBackstagePassesTest{int, int, int, int}[3]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="productBackstagePassesTest{int, int, int, int}[4]" classname="com.gildedrose.GildedRoseTest" time="0.002"/>
-  <testcase name="productBackstagePassesTest{int, int, int, int}[5]" classname="com.gildedrose.GildedRoseTest" time="0.002"/>
-  <testcase name="productBackstagePassesTest{int, int, int, int}[6]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="demoMockMuchosTest" classname="com.gildedrose.GildedRoseTest" time="0.002"/>
-  <testcase name="otherProductTest{int, int, int, int}[1]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="otherProductTest{int, int, int, int}[2]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="otherProductTest{int, int, int, int}[3]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="otherProductTest{int, int, int, int}[4]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="demoMockTest" classname="com.gildedrose.GildedRoseTest" time="0.003"/>
-  <testcase name="productSulfurasValidTest{int, int, int, int}[1]" classname="com.gildedrose.GildedRoseTest" time="0.002"/>
-  <testcase name="productSulfurasValidTest{int, int, int, int}[2]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="constructorGildedRoseTest" classname="com.gildedrose.GildedRoseTest" time="0.004"/>
-  <testcase name="productAgedBrieTest{int, int, int, int}[1]" classname="com.gildedrose.GildedRoseTest" time="0.002"/>
-  <testcase name="productAgedBrieTest{int, int, int, int}[2]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="productAgedBrieTest{int, int, int, int}[3]" classname="com.gildedrose.GildedRoseTest" time="0"/>
-  <testcase name="productAgedBrieTest{int, int, int, int}[4]" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="sulfurasQualityInvalidTest" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
-  <testcase name="saveRealGildedRoseTest" classname="com.gildedrose.GildedRoseTest" time="0.704"/>
-  <testcase name="saveGildedRoseTest" classname="com.gildedrose.GildedRoseTest" time="0.003"/>
-  <testcase name="maxQualityInvalidTest" classname="com.gildedrose.GildedRoseTest" time="0.001"/>
+  <testcase name="deleteByIdTest" classname="com.gildedrose.ItemRepositoryTest" time="0.602"/>
+  <testcase name="getOneTest" classname="com.gildedrose.ItemRepositoryTest" time="0.415"/>
+  <testcase name="getAllTest" classname="com.gildedrose.ItemRepositoryTest" time="0.386"/>
 </testsuite>

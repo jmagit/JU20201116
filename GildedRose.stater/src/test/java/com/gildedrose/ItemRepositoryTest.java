@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.ext.mysql.MySqlDataTypeFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -61,6 +64,21 @@ class ItemRepositoryTest {
 		connection.close();
 		databaseTester.onTearDown();
 	}
+	
+	private ITable getTablaActual(String tabla) throws Exception, DataSetException, SQLException {
+		return connection.createDataSet().getTable(tabla);
+	}
+
+	private ITable getTablaActual(String tabla, String sql) throws Exception, DataSetException, SQLException {
+		return connection.createQueryTable(tabla, sql);
+	}
+
+	private ITable getTablaEsperada(String resource, String tabla) throws DataSetException {
+		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
+		IDataSet expectedDataSet = builder.build(this.getClass().getResourceAsStream(resource));
+		return expectedDataSet.getTable(tabla);
+	}
+
 
 	@Test
 	void getAllTest() throws Exception {
@@ -83,10 +101,22 @@ class ItemRepositoryTest {
 				() -> assertEquals(0, product.quality, "quality"));
 	}
 	@Test
+	void getOneNotFoundTest() throws Exception {
+		Optional<Item> actual = dao.getOne(33);
+		assertFalse(actual.isPresent());
+	}
+	@Test
+	void trampaTest() throws Exception {
+		dao.add(new Item(0,"kk", 1 , 1));
+	}
+	@Test
 	void deleteByIdTest() throws Exception {
 		dao.deleteById(3);
-		List<Item> actual = dao.getAll();
-		assertEquals(9, actual.size());
+//		ITable actual = getTablaActual("products");
+//		ITable esperado = getTablaEsperada("item-delete-result.xml", "products");
+//		assertEquals(esperado, actual);
+		 List<Item> actual = dao.getAll();
+		 assertEquals(9, actual.size());
 	}
 
 }
