@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import org.dbunit.Assertion;
 import org.dbunit.DefaultOperationListener;
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
@@ -112,11 +113,11 @@ class ItemRepositoryTest {
 	@Test
 	void deleteByIdTest() throws Exception {
 		dao.deleteById(3);
-//		ITable actual = getTablaActual("products");
-//		ITable esperado = getTablaEsperada("item-delete-result.xml", "products");
-//		assertEquals(esperado, actual);
-		 List<Item> actual = dao.getAll();
-		 assertEquals(9, actual.size());
+		ITable actual = getTablaActual("products");
+		ITable esperado = getTablaEsperada("/item-delete-result.xml", "products");
+		Assertion.assertEquals(esperado, actual);
+//		 List<Item> actual = dao.getAll();
+//		 assertEquals(9, actual.size());
 	}
 
 }
