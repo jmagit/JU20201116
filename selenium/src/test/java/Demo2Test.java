@@ -67,7 +67,8 @@ public class Demo2Test {
     driver.findElement(By.cssSelector("tr:nth-child(7) .btnNum")).click();
     driver.findElement(By.cssSelector("td:nth-child(3) > .btnOperar")).click();
     driver.findElement(By.linkText("Contactos")).click();
-    driver.findElement(By.cssSelector("tr:nth-child(2) .btn-info > .fas")).click();
+    driver.findElements(By.cssSelector(".fas")).get(0).click();
+//    driver.findElement(By.cssSelector("tr:nth-child(2) .btn-info > .fas")).click();
     driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
     driver.findElement(By.cssSelector("tr:nth-child(2) .btn-success")).click();
     driver.findElement(By.id("tratamiento")).click();
