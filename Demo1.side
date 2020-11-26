@@ -1,0 +1,223 @@
+{
+  "id": "595bad82-1a7d-4d58-9e9f-ee1aa5960dfb",
+  "version": "2.0",
+  "name": "Demo1",
+  "url": "https://www.selenium.dev",
+  "tests": [{
+    "id": "9cd479b6-c8f8-45ea-b518-a0ef2d07d7d6",
+    "name": "Paseo1",
+    "commands": [{
+      "id": "e1041121-67f8-421f-b18d-9f980f51f13c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9f3eb455-24be-410f-9227-039b0de51c4f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c7ea9aa7-0be6-4ad7-8e66-61145a1c4997",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item > span",
+      "targets": [
+        ["css=.nav-item > span", "css:finder"],
+        ["xpath=//nav[@id='navbar']/div/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'About')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bc28833-b9bf-4596-a1b4-44377405fc13",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About",
+      "targets": [
+        ["linkText=About", "linkText"],
+        ["css=.subnav:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'About')]", "xpath:link"],
+        ["xpath=//ul[@id='aboutSubnav']/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/about')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'About')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e7d537e-4eca-42bc-8fbb-80d96c43b426",
+      "comment": "",
+      "command": "click",
+      "target": "id=gsc-i-id1",
+      "targets": [
+        ["id=gsc-i-id1", "id"],
+        ["name=search", "name"],
+        ["css=#gsc-i-id1", "css:finder"],
+        ["xpath=//input[@id='gsc-i-id1']", "xpath:attributes"],
+        ["xpath=//td[@id='gs_tti50']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b82ad2b7-e457-449c-9517-e697ad177c0b",
+      "comment": "",
+      "command": "type",
+      "target": "id=gsc-i-id1",
+      "targets": [
+        ["id=gsc-i-id1", "id"],
+        ["name=search", "name"],
+        ["css=#gsc-i-id1", "css:finder"],
+        ["xpath=//input[@id='gsc-i-id1']", "xpath:attributes"],
+        ["xpath=//td[@id='gs_tti50']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "drivers"
+    }, {
+      "id": "887f9e54-db1c-40d5-a6c6-02bab2539314",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=gsc-i-id1",
+      "targets": [
+        ["id=gsc-i-id1", "id"],
+        ["name=search", "name"],
+        ["css=#gsc-i-id1", "css:finder"],
+        ["xpath=//input[@id='gsc-i-id1']", "xpath:attributes"],
+        ["xpath=//td[@id='gs_tti50']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "82adeef2-0801-421b-967f-0d9424f66b3a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=download Selenium Server",
+      "targets": [
+        ["linkText=download Selenium Server", "linkText"],
+        ["css=.gsc-webResult:nth-child(1) > .gs-webResult > .gsc-thumbnail-inside > .gs-title > .gs-title", "css:finder"],
+        ["xpath=//a[contains(text(),'download Selenium Server')]", "xpath:link"],
+        ["xpath=//div[@id='___gcse_0']/div/div/div/div[5]/div[2]/div/div/div/div/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.seleniumhq.org/downloads')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'download Selenium Server')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win6513",
+      "windowTimeout": 2000
+    }, {
+      "id": "59b58728-b5ab-4e40-b68b-c32472451726",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win6513}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e0d3e7bc-a836-41fb-a9a6-8e6e5bf59dd9",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Downloads",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa73426d-2f29-49d0-82e1-87ab9eb03702",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Documentation",
+      "targets": [
+        ["linkText=Documentation", "linkText"],
+        ["css=.nav-item:nth-child(5)", "css:finder"],
+        ["xpath=//a[contains(text(),'Documentation')]", "xpath:link"],
+        ["xpath=//nav[@id='navbar']/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/documentation')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Documentation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "958bfbc5-fd4f-43cc-926e-0e693c4b206a",
+      "comment": "",
+      "command": "click",
+      "target": "id=the-selenium-browser-automation-project",
+      "targets": [
+        ["id=the-selenium-browser-automation-project", "id"],
+        ["css=#the-selenium-browser-automation-project", "css:finder"],
+        ["xpath=//h1[@id='the-selenium-browser-automation-project']", "xpath:attributes"],
+        ["xpath=//div[@id='body-inner']/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'The Selenium Browser Automation Project')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "52152d4e-a5b4-4fb0-aa3a-6735c8c84b17",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "The Selenium Browser Automation Project :: Documentation for Selenium",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "354db334-0f42-4b9f-95ef-08ab0483dd97",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Selenium installation",
+      "targets": [
+        ["linkText=Selenium installation", "linkText"],
+        ["css=.visited:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Selenium installation')]", "xpath:link"],
+        ["xpath=//nav[@id='sidebar']/div[2]/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.selenium.dev/documentation/en/selenium_installation/')]", "xpath:href"],
+        ["xpath=//div[2]/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Selenium installation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9578fffc-4a40-4299-8920-63e0f84faa5b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-chevron-right",
+      "targets": [
+        ["css=.fa-chevron-right", "css:finder"],
+        ["xpath=//div[@id='navigation']/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca599fda-7686-4434-bbe3-4a44e25bccaa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-chevron-right",
+      "targets": [
+        ["css=.fa-chevron-right", "css:finder"],
+        ["xpath=//div[@id='navigation']/a[2]/i", "xpath:idRelative"],
+        ["xpath=//a[2]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "478fd639-26fc-478c-9587-26e2da35866a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=WebDriver",
+      "targets": [
+        ["linkText=WebDriver", "linkText"],
+        ["css=.topics > .dd-item:nth-child(5) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'WebDriver')])[3]", "xpath:link"],
+        ["xpath=//nav[@id='sidebar']/div[2]/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.selenium.dev/documentation/en/webdriver/')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f596a1cf-41ec-434e-86dd-a378a0165a83",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9cd479b6-c8f8-45ea-b518-a0ef2d07d7d6"]
+  }],
+  "urls": ["https://www.selenium.dev/"],
+  "plugins": []
+}
